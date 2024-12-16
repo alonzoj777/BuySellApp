@@ -11,19 +11,19 @@ namespace API.Controllers
     public class UsersController(DataContext context) : ControllerBase
     {
         [HttpGet]
-        public ActionResult<IEnumerable<AppUser>> GetUsers()
+        public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
 #pragma warning disable CS8604 // Possible null reference argument.
-            var users = context.Users.ToList();
+            var users = await context.Users.ToListAsync();
 #pragma warning restore CS8604 // Possible null reference argument.
 
             return users;
         }
-        [HttpGet("{id}")]
-        public ActionResult<AppUser> GetUsers(int id)
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<AppUser>> GetUsers(int id)
         {
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
-            var user = context.Users.Find(id);
+            var user = await context.Users.FindAsync(id);
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
             if(user == null) return NotFound();
             
