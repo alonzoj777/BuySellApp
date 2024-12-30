@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <div style="text-align: center;">
+        @if (!registerMode) {
+            <h1>Stock Now!</h1>
+            <p class="lead">Welcome to Stock Now! This is a simple stock trading app that allows you to buy and sell stocks.</p>
+            <p>Click the button below to register or login to get started.</p>
+            <div class="text-center">
+                <!-- <button class="btn btn-primary btn-lg me-2" (click)="register()">Register</button>
+                <button class="btn btn-secondary btn-lg me-2" (click)="login()">Login</button>
+                <button class="btn btn-info btn-lg me2" (click)="moreInfo()">More Info</button> -->
+                <button class="btn btn-primary btn-lg me-2" (click)="registerToggle()">Register</button>
+                <button class="btn btn-secondary btn-lg me-2" >Login</button>
+                <button class="btn btn-info btn-lg me2" >More Info</button>
+            </div>
+        }
+        @else { <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+                </div>     
+            </div>
+        </div>
+      }         
+    </div>
+</div>
