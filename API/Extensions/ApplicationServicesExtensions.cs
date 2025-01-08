@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using API.Data;
+using API.Helpers;
 using API.Interface;
 using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -27,6 +28,8 @@ public static class ApplicationServicesExtensions
             });
         });
         services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
        
         return services;
     }
